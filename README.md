@@ -1,58 +1,93 @@
-📰 Fake News Detection System Overview
-The Fake News Detection System is a machine learning model designed to identify whether a piece of news is real or fake based on the text content.
+# Fake News Detection System
 
-🚀 1. Problem Statement
-Fake news is a growing issue in modern media and social platforms.
-The goal is to build a model that can automatically classify news articles as Real or Fake based on the article text.
+## Overview
+The Fake News Detection System is a machine learning web application built using Python and Flask. It is designed to identify whether a news headline is real or fake based on its text content. The system combines text preprocessing, TF-IDF vectorization, and a logistic regression model to make predictions.
 
-🛠️ 2. Tech Stack Used
-Programming Language : Python
-Data Handling	: Pandas, NumPy
-Feature Extraction : 	Scikit-learn (TF-IDF)
-Model	: Logistic Regression
-Evaluation :	Scikit-learn (Confusion Matrix, Accuracy Score)
-Saving/Loading Model :	Pickle
+---
 
-📂 3. Dataset
-The dataset contained two key columns:
-✅ Text → The content of the news article
-✅ Label → 0 = Fake News, 1 = Real News
+## 1. Problem Statement
 
-🔎 4. Data Preprocessing
-✅ Missing Values Removal – Cleaned the dataset by dropping rows with missing values.
-✅ Text Lowercasing – Converted text to lowercase to reduce inconsistencies.
-✅ Train-Test Split – Split the data into 80% training and 20% testing.
+Fake news is a significant issue on digital platforms. The objective of this project is to build a model that can automatically classify news content as real or fake. This is further enhanced with a user-friendly interface built using Flask for seamless interaction.
 
-🌐 5. Feature Extraction using TF-IDF
-We used TF-IDF (Term Frequency-Inverse Document Frequency) to convert the text into numerical vectors:
+---
 
-Term Frequency (TF): Frequency of a term in the document.
-Inverse Document Frequency (IDF): Measures how common or rare a term is across all documents.
-This allowed the model to understand the importance of certain words within the context of the dataset.
+## 2. Tech Stack Used
 
-🤖 6. Model Training
-✅ We used a Logistic Regression model because:
+| Layer              | Technology Used                        |
+|-------------------|----------------------------------------|
+| Programming        | Python                                 |
+| Data Handling      | Pandas, NumPy                          |
+| Feature Extraction | Scikit-learn (TF-IDF Vectorizer)       |
+| Model              | Logistic Regression                    |
+| Evaluation         | Scikit-learn (Confusion Matrix, ROC)   |
+| Model Persistence  | Joblib                                 |
+| Web Framework      | Flask                                  |
+| Visualization      | Matplotlib, Seaborn                    |
 
-It's effective for binary classification problems.
-It's simple and interpretable.
-Handles text data well when combined with TF-IDF.
+---
 
-🎯 7. Model Evaluation
-✅ Accuracy: Measured how often the model predicted correctly.
-✅ Classification Report: Displayed Precision, Recall, and F1-Score.
-✅ Confusion Matrix: Provided a breakdown of True Positives, True Negatives, False Positives, and False Negatives.
+## 3. Dataset
+
+The dataset contains two important columns:
+
+- Headline → Text input for classification
+- Label → 0 = Real News, 1 = Fake News
+
+---
+
+## 4. Data Preprocessing
+
+- Removed missing values
+- Lowercased and cleaned all text inputs
+- Split the dataset into 80% training and 20% testing sets
+
+---
+
+## 5. Feature Extraction using TF-IDF
+
+Used Term Frequency-Inverse Document Frequency (TF-IDF) to transform textual data into numerical vectors. This method emphasizes important words while reducing the weight of commonly used ones across all documents.
+
+---
+
+## 6. Model Training
+
+The model was trained using Logistic Regression, chosen for its simplicity and strong performance in binary classification tasks. It is particularly effective when used with TF-IDF vectorized data.
+
+---
+
+## 7. Model Evaluation
+
+The model's performance was assessed using:
+
+- Accuracy score
+- Classification report (precision, recall, F1-score)
+- Confusion matrix
+- ROC curve
+
+---
+
+## 8. Web Application using Flask
+
+A web application was developed using Flask that allows users to:
+
+- Enter a news headline
+- Submit it for prediction
+- View the result (Real or Fake)
+- Review model evaluation visualizations:
+  - Confusion Matrix
+  - ROC Curve
+  - Classification Report Heatmap
+
+---
+
+## 9. Model Graphs and Reports
+
+When `train_model.py` is executed, the following graphs are automatically generated and saved in the `static/` folder:
+
+- Confusion_Matrix.png
+- ROC_Curve.png
+- Classification_Report.png
+
+These are then displayed in the result page of the web app.
 
 
- 8. Model Deployment and Testing
-✅ Saved the model and vectorizer using Pickle for easy reusability.
-✅ Tested the model with new, unseen data to check generalization.
-
-✅ Why It Worked Well
-✔️ Logistic Regression is well-suited for binary classification.
-✔️ TF-IDF captured the relationship between important words and patterns.
-✔️ Good accuracy and performance due to balanced data and preprocessing.
-
-🚀 Outcome
-Achieved an accuracy of ~90% on the test set.
-Successfully identified patterns that distinguish real and fake news.
-The model is ready for deployment and real-world usage!
